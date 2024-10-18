@@ -5,7 +5,7 @@ import styled from "@mui/material/styles/styled";
 import { FC } from "react";
 
 // Styled LinearProgress with custom colors
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+const BorderLinearProgress = styled(LinearProgress) ({
   height: 5,
   borderRadius: 5,
   [`&.MuiLinearProgress-colorPrimary`]: {
@@ -15,7 +15,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     borderRadius: 5,
     backgroundColor: "black", // Set the progress color to black
   },
-}));
+});
 
 interface IAppProgressProps {
   progress: number;
