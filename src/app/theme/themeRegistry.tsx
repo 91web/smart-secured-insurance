@@ -12,20 +12,20 @@ interface ThemeRegistryProps {
 }
 
 export default function ThemeRegistry({ options = {}, children }: ThemeRegistryProps) {
-  // Create a cache with a custom key
-  const cacheKey = "custom"; // 'custom' can be any identifier for the cache
+  // Define a unique key for Emotion cache
+  const cacheKey = "custom";
 
   const theme = useMemo(
     () =>
       createTheme({
-        ...options, // Spread custom options if provided
+        ...options, // Include custom theme options if provided
         palette: {
           mode: "light",
-          ...(options.palette || {}), // Merge custom palette options if any
+          ...(options.palette || {}), // Merge custom palette options
         },
         typography: {
           fontFamily: ["Lato"].join(","),
-          ...(options.typography || {}), // Merge custom typography options if any
+          ...(options.typography || {}), // Merge custom typography options
         },
       }),
     [options]
@@ -34,8 +34,10 @@ export default function ThemeRegistry({ options = {}, children }: ThemeRegistryP
   const [{ cache, flush }] = useState(() => {
     const cache = createCache({ key: cacheKey });
     cache.compat = true;
+
     const prevInsert = cache.insert;
     let inserted: string[] = [];
+    
     cache.insert = (...args) => {
       const serialized = args[1];
       if (cache.inserted[serialized.name] === undefined) {
@@ -43,11 +45,13 @@ export default function ThemeRegistry({ options = {}, children }: ThemeRegistryP
       }
       return prevInsert(...args);
     };
+
     const flush = () => {
       const prevInserted = inserted;
       inserted = [];
       return prevInserted;
     };
+
     return { cache, flush };
   });
 
@@ -56,10 +60,12 @@ export default function ThemeRegistry({ options = {}, children }: ThemeRegistryP
     if (names.length === 0) {
       return null;
     }
+
     let styles = "";
     for (const name of names) {
       styles += cache.inserted[name];
     }
+
     return (
       <style
         key={cache.key}

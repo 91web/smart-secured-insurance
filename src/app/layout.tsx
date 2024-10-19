@@ -9,8 +9,8 @@ import ThemeRegistry from "./theme/themeRegistry";
 import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
-  title: "She Nations App",
-  description: "SHE Nations: a community of faith-driven women committed to living purpose-filled lives.",
+  title: "Smart Guard",
+  description: "Smart Guard for protecting you Mobile smart devices",
 };
 
 const DynamicWebContextProvider = dynamic(
@@ -33,14 +33,15 @@ export default function RootLayout({
       <body>
         <DynamicWebContextProvider>
           <AppRouterCacheProvider>
-            <ThemeRegistry options={{ key: "mui" }}>
+            {/* Removed the key property from options */}
+            <ThemeRegistry>
               <div className="app-layout">
                 <header className="app-header">
-                  <h1>Welcome to She Nations</h1>
+                  <h1>Welcome to Smart Guard</h1>
                 </header>
                 <main className="app-content">{children}</main>
                 <footer className="app-footer">
-                  <p>© 2024 She Nations. All rights reserved.</p>
+                  <p>© 2024 Smart Guard. All rights reserved.</p>
                 </footer>
               </div>
             </ThemeRegistry>
