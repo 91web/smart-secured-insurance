@@ -1,7 +1,7 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "@fontsource/libre-baskerville";
 import "@fontsource/lato";
-// Supports weights 100-900
 import "@fontsource-variable/jost";
 import "./theme/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
@@ -10,8 +10,7 @@ import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   title: "She Nations App",
-  description:
-    "SHE Nations: a community of faith-driven women committed to living purpose-filled lives.",
+  description: "SHE Nations: a community of faith-driven women committed to living purpose-filled lives.",
 };
 
 const DynamicWebContextProvider = dynamic(
@@ -34,7 +33,17 @@ export default function RootLayout({
       <body>
         <DynamicWebContextProvider>
           <AppRouterCacheProvider>
-            <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
+            <ThemeRegistry options={{ key: "mui" }}>
+              <div className="app-layout">
+                <header className="app-header">
+                  <h1>Welcome to She Nations</h1>
+                </header>
+                <main className="app-content">{children}</main>
+                <footer className="app-footer">
+                  <p>© 2024 She Nations. All rights reserved.</p>
+                </footer>
+              </div>
+            </ThemeRegistry>
           </AppRouterCacheProvider>
         </DynamicWebContextProvider>
       </body>

@@ -2,30 +2,37 @@
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider } from "@emotion/react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme, ThemeOptions } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useMemo, useState } from "react";
-import { useMediaQuery } from "@mui/material";
+import { useMemo, useState, ReactNode } from "react";
 
-export default function ThemeRegistry(props: { options: any; children: any }) {
-  const { options, children } = props;
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
+interface ThemeRegistryProps {
+  options?: ThemeOptions; // Options are optional here and used for custom theme creation
+  children: ReactNode;
+}
+
+export default function ThemeRegistry({ options = {}, children }: ThemeRegistryProps) {
+  // Create a cache with a custom key
+  const cacheKey = "custom"; // 'custom' can be any identifier for the cache
 
   const theme = useMemo(
     () =>
       createTheme({
+        ...options, // Spread custom options if provided
         palette: {
           mode: "light",
+          ...(options.palette || {}), // Merge custom palette options if any
         },
         typography: {
-          fontFamily: [`${"Lato"}`].join(","),
+          fontFamily: ["Lato"].join(","),
+          ...(options.typography || {}), // Merge custom typography options if any
         },
       }),
-    []
+    [options]
   );
 
   const [{ cache, flush }] = useState(() => {
-    const cache = createCache(options);
+    const cache = createCache({ key: cacheKey });
     cache.compat = true;
     const prevInsert = cache.insert;
     let inserted: string[] = [];
