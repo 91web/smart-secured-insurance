@@ -37,7 +37,7 @@ export default function RootLayout({
             <ThemeRegistry>
               <div className="app-layout">
                 <header className="app-header">
-                  <h1>Welcome to Smart Guard</h1>
+                  <h1>Welcome to Smart Guard || Yusuf Ayodeji</h1>
                 </header>
                 <main className="app-content">{children}</main>
                 <footer className="app-footer">
