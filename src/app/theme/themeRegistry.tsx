@@ -2,18 +2,14 @@
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider } from "@emotion/react";
-import { ThemeProvider, createTheme, ThemeOptions } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useMemo, useState, ReactNode } from "react";
+import { useMemo, useState } from "react";
+import { useMediaQuery } from "@mui/material";
 
-interface ThemeRegistryProps {
-  options: ThemeOptions;
-  children: ReactNode;
-}
-
-export default function ThemeRegistry({ options, children }: ThemeRegistryProps) {
-  // Adding the key to the cache options
-  const cacheOptions = { ...options, key: "custom" }; // 'custom' can be any identifier for the cache
+export default function ThemeRegistry(props: { options: any; children: any }) {
+  const { options, children } = props;
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
 
   const theme = useMemo(
     () =>
@@ -22,14 +18,14 @@ export default function ThemeRegistry({ options, children }: ThemeRegistryProps)
           mode: "light",
         },
         typography: {
-          fontFamily: ["Lato"].join(","),
+          fontFamily: [`${"Lato"}`].join(","),
         },
       }),
     []
   );
 
   const [{ cache, flush }] = useState(() => {
-    const cache = createCache(cacheOptions);
+    const cache = createCache(options);
     cache.compat = true;
     const prevInsert = cache.insert;
     let inserted: string[] = [];
