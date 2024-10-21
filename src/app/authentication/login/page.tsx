@@ -90,7 +90,7 @@ function AppLogin() {
                 }}
               >
                 <Image
-                  alt="She Nation"
+                  alt="Smart Guard"
                   src={SgLogo}
                   style={{ width: "100%", height: "100%", marginBottom: 3 }}
                 />
@@ -148,17 +148,17 @@ function AppLogin() {
           {/* Forgot Password link */}
           {/* <CardActions> */}
           <Box sx={{ display: 'flex', gap: 2, marginTop: 2 }}>
-  <Link href="./reset-password" passHref>
-    <Button sx={{ textTransform: 'none' }}>
-      Forgot Password?
-    </Button>
-  </Link>
-  <Link href="./register" passHref>
-    <Button variant="outlined" sx={{ textTransform: 'none' }}>
-      Register
-    </Button>
-  </Link>
-</Box>
+          <Link href="./reset-password" passHref>
+            <Button sx={{ textTransform: 'none' }}>
+              Forgot Password?
+            </Button>
+          </Link>
+          <Link href="./register" passHref>
+            <Button variant="outlined" sx={{ textTransform: 'none' }}>
+              Register
+            </Button>
+          </Link>
+        </Box>
           {/* </CardActions> */}
 
           {/* Privacy Policy link at the bottom */}
