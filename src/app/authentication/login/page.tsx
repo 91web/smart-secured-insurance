@@ -126,7 +126,8 @@ function AppLogin() {
                 },
                 }}
               />
-
+           
+              <Link href="../../web/clients" passHref>
               <Button
                 variant="contained"
                 sx={{
@@ -138,10 +139,11 @@ function AppLogin() {
                   "&:hover": {
                     backgroundColor: "#333333"},
                 }}
-                type="submit"
+               // type="submit"
               >
                 Log in
               </Button>
+              </Link>
             </form>
           </Box>
 

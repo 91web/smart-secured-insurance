@@ -9,6 +9,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
+import Image from "next/image";
+import SgLogo from "../../../assets/img/sg-logo.png";
 
 function AppRegister() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -61,7 +63,23 @@ function AppRegister() {
           alignItems: "center",
           padding: { xs: 2, md: 4 },
         }}
+      > <Box width={{ xs: "100%", md: "400px" }} textAlign={"center"}>
+      <Box
+        sx={{
+          mt: 10,
+          display: { xs: "block", md: "block" },
+          height: { xs: 65, md: 90 },
+          width: { xs: 75, md: 110 },
+          m: "auto",
+        }}
       >
+        <Image
+          alt="Smart Guard"
+          src={SgLogo}
+          style={{ width: "100%", height: "100%", marginBottom: 3 }}
+        />
+      </Box>
+      </Box>
         <Typography variant="h5" gutterBottom mb={3} color="black" my={4}>
           Create an Account
         </Typography>

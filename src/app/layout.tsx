@@ -36,9 +36,6 @@ export default function RootLayout({
             {/* Removed the key property from options */}
             <ThemeRegistry>
               <div className="app-layout">
-                <header className="app-header">
-                  <h1>Welcome to Smart Guard || Yusuf Ayodeji</h1>
-                </header>
                 <main className="app-content">{children}</main>
                 <footer className="app-footer">
                   <p>© 2024 Smart Guard. All rights reserved.</p>
