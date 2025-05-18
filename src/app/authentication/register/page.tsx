@@ -9,6 +9,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
+import Image from "next/image";
+import SgLogo from "../../../assets/img/sg-logo.png";
+import SafeLogo from "../../../assets/img/Sg-image.jpg";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid2";
 
 function AppRegister() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -29,154 +34,239 @@ function AppRegister() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Add validation for password matching
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
-    // Handle registration logic here (e.g., API call)
     console.log({ firstName, lastName, email, password });
   };
 
   return (
-    <Box
+    <Grid
+      container
+      spacing={4}
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        width: "100%",
-        backgroundColor: "#ffff",
-        overflow: "hidden",
+        minHeight: "100vh",
+        backgroundColor: "#ffffff",
       }}
     >
-      <Box
+      {/* Image Section */}
+      <Grid
+        size={{ xs: 12, md: 6 }}
         sx={{
-          width: { xs: "100%", md: "400px" },
+          display: { xs: "none", md: "block" },
+        }}
+      >
+        <CardMedia
+          component="img"
+          image={SafeLogo.src}
+          alt="Register Image"
+          sx={{
+            width: "100%",
+            height: "100vh",
+            objectFit: "cover",
+            opacity: 0.5,
+          }}
+        />
+      </Grid>
+
+      {/* Form Section */}
+      <Grid
+        size={{ xs: 12, md: 6 }}
+        sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
-          padding: { xs: 2, md: 4 },
+          px: { xs: 2, md: 4 },
+          py: 4,
         }}
       >
-        <Typography variant="h5" gutterBottom mb={3} color="black" my={4}>
-          Create an Account
-        </Typography>
-
-        <form onSubmit={handleSubmit} noValidate autoComplete="off" style={{ width: "100%" }}>
-          <TextField
-            label="First Name"
-            variant="outlined"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            sx={{ marginBottom: 2, width: "100%" }}
-            required
-          />
-          <TextField
-            label="Last Name"
-            variant="outlined"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            sx={{ marginBottom: 2, width: "100%" }}
-            required
-          />
-          <TextField
-            label="Email Address"
-            variant="outlined"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            sx={{ marginBottom: 2, width: "100%" }}
-            required
-          />
-          <TextField
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            variant="outlined"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            sx={{ marginBottom: 2, width: "100%" }}
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
+        <Box sx={{ textAlign: "center", mb: 3 }}>
+          <Box
+            sx={{
+              display: "inline-block",
+              width: { xs: 75, md: 100 },
+              // mb: 2,
             }}
-          />
-          <TextField
-            label="Confirm Password"
-            type={showConfirmPassword ? "text" : "password"}
-            variant="outlined"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            sx={{ marginBottom: 2, width: "100%" }}
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle confirm password visibility"
-                    onClick={handleClickShowConfirmPassword}
-                    edge="end"
-                  >
-                    {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+          >
+            <Image
+              alt="Smart Guard"
+              src={SgLogo}
+              style={{ width: "100%", height: "auto" }}
+            />
+          </Box>
+          <Typography variant="h5" gutterBottom color="black">
+            Create an Account
+          </Typography>
+        </Box>
 
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ width: "100%" }}
+        >
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                label="First Name"
+                variant="outlined"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                label="Last Name"
+                variant="outlined"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                label="Email Address"
+                variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                variant="outlined"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                fullWidth
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                label="Confirm Password"
+                type={showConfirmPassword ? "text" : "password"}
+                variant="outlined"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                fullWidth
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle confirm password visibility"
+                          onClick={handleClickShowConfirmPassword}
+                          edge="end"
+                        >
+                          {showConfirmPassword ? (
+                            <Visibility />
+                          ) : (
+                            <VisibilityOff />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+            </Grid>
+          </Grid>
           <Button
             variant="contained"
+            type="submit"
             sx={{
               backgroundColor: "#000000",
               color: "white",
-              marginTop: 2,
+              mt: 2,
               textTransform: "none",
               width: "100%",
               "&:hover": {
                 backgroundColor: "#333333",
               },
             }}
-            type="submit"
           >
             Register
           </Button>
-        </form>
-
-        <Box sx={{ display: 'flex', gap: 2, marginTop: 2 }}>
-          <Link href="./login" passHref>
-            <Button sx={{ textTransform: 'none' }}>
-              Already have an account? Log in
-            </Button>
-          </Link>
         </Box>
 
+        {/* Additional Links */}
         <Box
-          sx={{ alignSelf: "center", mt: "auto", marginTop: 2 }}
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            alignItems: "center",
+            justifyContent: "space-around",
+            marginTop: 2,
+            width: "100%",
+          }}
         >
-          <Link
-            href="./privacy"
-            passHref
-            style={{ width: "fit-content", margin: "auto" }}
-          >
-            <Button sx={{ textTransform: "none", width: "200px" }}>
+          <Link href="./login" passHref>
+            <Button sx={{ textTransform: "none", mb: { xs: 1, md: 0 } }}>
+              Back to Login
+            </Button>
+          </Link>
+          <Link href="./register" passHref>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: { xs: 0.5, md: 1 },
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
+              <Typography variant="body2" color="text.secondary">
+                I have an account?
+              </Typography>
+              <Button
+                variant="outlined"
+                sx={{
+                  textTransform: "none",
+                  height: 30,
+                  width: { xs: "120px", md: "150px" },
+                  fontSize: { xs: "10px", md: "16px" },
+                }}
+              >
+                Forgot Password
+              </Button>
+            </Box>
+          </Link>
+          <Link href="./privacy" passHref style={{ width: "fit-content" }}>
+            <Button
+              sx={{
+                textTransform: "none",
+                width: { xs: "120px", md: "120px" },
+              }}
+            >
               Privacy Policy
             </Button>
           </Link>
         </Box>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 }
 

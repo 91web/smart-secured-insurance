@@ -79,16 +79,22 @@ function ForgotPassword() {
         </Box>
 
         {/* Additional Links */}
-        <Box sx={{ display: 'flex', gap: 2, marginTop: 2 }}>
+        <Box sx={{ display: "flex", gap: 2, marginTop: 2 }}>
           <Link href="./login" passHref>
-            <Button sx={{ textTransform: 'none' }}>
-              Back to Login
-            </Button>
+            <Button sx={{ textTransform: "none" }}>Back to Login</Button>
           </Link>
           <Link href="./register" passHref>
-            <Button variant="outlined" sx={{ textTransform: 'none' }}>
-              Register
-            </Button>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <Typography variant="body2" color="text.secondary">
+                Don't have an account?
+              </Typography>
+              <Button
+                variant="outlined"
+                sx={{ textTransform: "none", height: 30 }}
+              >
+                Register
+              </Button>
+            </Box>
           </Link>
         </Box>
 

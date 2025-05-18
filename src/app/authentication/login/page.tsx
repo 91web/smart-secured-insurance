@@ -147,33 +147,43 @@ function AppLogin() {
 
           {/* Forgot Password link */}
           {/* <CardActions> */}
-          <Box sx={{ display: 'flex', gap: 2, marginTop: 2 }}>
-          <Link href="./reset-password" passHref>
-            <Button sx={{ textTransform: 'none' }}>
+            <Box sx={{ display: 'flex', gap: 2, marginTop: 2, justifyContent: 'space-between' }}>
+            <Link href="./reset-password" passHref>
+              <Button sx={{ textTransform: 'none' }}>
               Forgot Password?
-            </Button>
-          </Link>
-          <Link href="./register" passHref>
-            <Button variant="outlined" sx={{ textTransform: 'none' }}>
-              Register
-            </Button>
-          </Link>
-        </Box>
+              </Button>
+            </Link>
+
+            <Link href="./register" passHref>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Typography variant="body2" color="text.secondary">
+                Don't have an account?
+              </Typography>
+              <Button variant="outlined" sx={{ textTransform: 'none', height: 30 }}>
+                Register
+              </Button>
+              </Box>
+            </Link>
+            </Box>
           {/* </CardActions> */}
 
           {/* Privacy Policy link at the bottom */}
           <Box
-            sx={{ alignSelf: "center", mt: "auto" }}
+            sx={{ alignSelf: "center", mt: "10px" }}
             position={"absolute"}
             bottom={0}
-            py={5}
+       
           >
             <Link
               href="./privacy"
               passHref
-              style={{ width: "fit-content", margin: "auto" }}
+              style={{
+                textDecoration: "none",
+                color: "#000000",
+                fontSize: "14px",
+              }}
             >
-              <Button sx={{ textTransform: "none", width: "200px" }}>
+              <Button sx={{ textTransform: "none", }}>
                 Privacy Policy
               </Button>
             </Link>
