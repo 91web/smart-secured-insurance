@@ -206,7 +206,7 @@ function PrivacyPolicy() {
         </Typography>
         <List sx={{ listStyleType: "disc", pl: 4 }} dense>
           <ListItem sx={{ display: "list-item" }}>
-            <ListItemText primary="To Provide and Maintain Our Services: We use your personal and device information to deliver our app's functionality and ensure a seamless experience." />
+            <ListItemText primary="To Provide and Maintain Our Services: We use your personal and device information to deliver our app&apos;s functionality and ensure a seamless experience." />
           </ListItem>
           <ListItem sx={{ display: "list-item" }}>
             <ListItemText primary="To Improve Our App: Analyzing usage data helps us understand how users interact with Smart Guard, enabling us to enhance features and fix bugs." />

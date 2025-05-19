@@ -86,7 +86,7 @@ function ForgotPassword() {
           <Link href="./register" passHref>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <Typography variant="body2" color="text.secondary">
-                Don't have an account?
+                Don&apos;t have an account?
               </Typography>
               <Button
                 variant="outlined"

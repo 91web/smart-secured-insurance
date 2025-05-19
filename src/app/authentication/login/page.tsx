@@ -59,7 +59,7 @@ function AppLogin() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              opacity:0.5
+              opacity: 0.5,
             }}
           />
         </Box>
@@ -104,26 +104,26 @@ function AppLogin() {
                 variant="outlined"
                 sx={{ marginBottom: 2, width: "100%" }}
               />
-              
+
               <TextField
                 label="Password"
                 type={showPassword ? "text" : "password"}
                 variant="outlined"
                 sx={{ marginBottom: 2, width: "100%" }}
                 slotProps={{
-                  input:{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                },
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
 
@@ -136,7 +136,8 @@ function AppLogin() {
                   textTransform: "none",
                   width: "100%",
                   "&:hover": {
-                    backgroundColor: "#333333"},
+                    backgroundColor: "#333333",
+                  },
                 }}
                 type="submit"
               >
@@ -147,24 +148,32 @@ function AppLogin() {
 
           {/* Forgot Password link */}
           {/* <CardActions> */}
-            <Box sx={{ display: 'flex', gap: 2, marginTop: 2, justifyContent: 'space-between' }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              marginTop: 2,
+              justifyContent: "space-between",
+            }}
+          >
             <Link href="./reset-password" passHref>
-              <Button sx={{ textTransform: 'none' }}>
-              Forgot Password?
-              </Button>
+              <Button sx={{ textTransform: "none" }}>Forgot Password?</Button>
             </Link>
 
             <Link href="./register" passHref>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Typography variant="body2" color="text.secondary">
-                Don't have an account?
-              </Typography>
-              <Button variant="outlined" sx={{ textTransform: 'none', height: 30 }}>
-                Register
-              </Button>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Typography variant="body2" color="text.secondary">
+                  Don&apos;t have an account?
+                </Typography>
+                <Button
+                  variant="outlined"
+                  sx={{ textTransform: "none", height: 30 }}
+                >
+                  Register
+                </Button>
               </Box>
             </Link>
-            </Box>
+          </Box>
           {/* </CardActions> */}
 
           {/* Privacy Policy link at the bottom */}
@@ -172,7 +181,6 @@ function AppLogin() {
             sx={{ alignSelf: "center", mt: "10px" }}
             position={"absolute"}
             bottom={0}
-       
           >
             <Link
               href="./privacy"
@@ -183,9 +191,7 @@ function AppLogin() {
                 fontSize: "14px",
               }}
             >
-              <Button sx={{ textTransform: "none", }}>
-                Privacy Policy
-              </Button>
+              <Button sx={{ textTransform: "none" }}>Privacy Policy</Button>
             </Link>
           </Box>
         </Box>
